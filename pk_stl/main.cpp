@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-
+#include <stdlib.h>  
+#include <time.h>
+#include <vector>
+#define TAB_SIZE 30
 using namespace std;
 
 int isPalindrome(string text)
@@ -23,10 +26,65 @@ int isPalindrome(string text)
 	}
 }
 
+
 int main()
 {
+	srand(time(NULL));
 
+	int tab[TAB_SIZE];
+	int tab2[TAB_SIZE/2];
 
+	for (int i = 0; i < TAB_SIZE; i++)
+		tab[i] = rand() % 100;
 
+	for (int i = 0; i < TAB_SIZE; i++)
+		cout << tab[i] << endl;
+
+	copy(tab, tab + TAB_SIZE / 2, tab2);
+	
+	cout << endl;
+
+	for (int i = 0; i < TAB_SIZE / 2; i++)
+		cout << tab2[i] << endl;
+
+	int random = rand() % 100;
+
+	replace(tab, tab + TAB_SIZE, random, 0);
+
+	cout << endl;
+	cout << random << endl << endl;
+
+	for (int i = 0; i < TAB_SIZE; i++)
+		cout << tab[i] << endl;
+
+	rotate(tab, tab + TAB_SIZE / 2, tab + TAB_SIZE);
+
+	cout << endl;
+
+	for (int i = 0; i < TAB_SIZE; i++)
+		cout << tab[i] << endl;
+
+	swap(tab[0], tab[TAB_SIZE - 1]);
+
+	cout << endl;
+
+	for (int i = 0; i < TAB_SIZE; i++)
+		cout << tab[i] << endl;
+
+	sort(tab, tab + TAB_SIZE);
+
+	cout << endl;
+
+	for (int i = 0; i < TAB_SIZE; i++)
+		cout << tab[i] << endl;
+
+	sort(tab2, tab2 + TAB_SIZE / 2);
+
+	cout << endl;
+
+	for (int i = 0; i < TAB_SIZE / 2; i++)
+		cout << tab2[i] << endl;
+
+	system("pause");
 	return 0;
 }
