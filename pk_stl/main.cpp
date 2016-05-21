@@ -4,6 +4,8 @@
 #include <stdlib.h>  
 #include <time.h>
 #include <vector>
+#include <list>
+#include <fstream>
 #define TAB_SIZE 30
 using namespace std;
 
@@ -26,6 +28,47 @@ int isPalindrome(string text)
 	}
 }
 
+void wypisz_od_przodu(list<string> l)
+{
+	cout << "Wypisujemy od przodu: " << endl;
+	list<string>::iterator it;
+	for (it = l.begin(); it != l.end(); ++it)
+		cout << *it << endl;
+}
+
+void wypisz_od_tylu(list<string> l)
+{
+	cout << "Wypisujemy od tylu: " << endl;
+	list<string>::reverse_iterator it;
+	for (it = l.rbegin(); it != l.rend(); ++it)
+		cout << *it << endl;
+}
+
+void wypisz_od_przodu_ze_skokiem(vector<string> v, int n)
+{
+	cout << "Wypisujemy ze skokiem: " << n << endl;
+	vector<string>::iterator it;
+
+	for (it = v.begin(); it < v.end() - n; )
+	{
+		it += n;
+		cout << *it << endl;
+	}
+		
+}
+
+void wypisz_od_tylu_ze_skokiem(vector<string> v, int n)
+{
+	cout << "Wypisujemy od tylu ze skokiem: " << n << endl;
+	vector<string>::reverse_iterator it;
+
+	for (it = v.rbegin(); it < v.rend() - n; )
+	{
+		it += n;
+		cout << *it << endl;
+	}
+
+}
 
 int main()
 {
@@ -84,6 +127,31 @@ int main()
 
 	for (int i = 0; i < TAB_SIZE / 2; i++)
 		cout << tab2[i] << endl;
+
+
+	ifstream file("dane.txt");
+	string word;
+	vector<string> v;
+	list<string> l;
+
+	if (file.is_open())
+		while (!file.eof())
+		{
+			file >> word;
+			cout << word << endl;
+			v.push_back(word);
+			l.push_back(word);
+		}
+	else
+	{
+		cout << "Plik nie zostal poprawnio otwarty" << endl;
+		return 0;
+	}
+	
+	wypisz_od_przodu(l);
+	wypisz_od_tylu(l);
+	wypisz_od_przodu_ze_skokiem(v, 5);
+	wypisz_od_tylu_ze_skokiem(v, 4);
 
 	system("pause");
 	return 0;
