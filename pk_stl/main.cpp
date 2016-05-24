@@ -25,7 +25,8 @@ int isPalindrome(string text)
 		}
 
 		return max;
-	}
+	} else
+		return -1;
 }
 
 void wypisz_od_przodu(list<string> l)
