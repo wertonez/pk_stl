@@ -20,7 +20,7 @@ int isPalindrome(string text)
 		for (int i = 0; i < text.size(); i++)
 		{
 			temp = count(text.begin(), text.end(), text[i]);
-			if (max > temp)
+			if (max < temp)
 				max = temp;
 		}
 
